@@ -1,0 +1,9 @@
+com/mycompany/amavenspringjpa/entities/User.class
+com/mycompany/amavenspringjpa/dao/TrainerDao.class
+com/mycompany/amavenspringjpa/controllers/TrainersController.class
+com/mycompany/amavenspringjpa/services/TrainerService.class
+com/mycompany/amavenspringjpa/configuration/aMavenSpringJPAInitializer.class
+com/mycompany/amavenspringjpa/entities/Trainer.class
+com/mycompany/amavenspringjpa/entities/Trainer_.class
+com/mycompany/amavenspringjpa/entities/User_.class
+com/mycompany/amavenspringjpa/configuration/aMavenSpringJPAConfiguration.class
