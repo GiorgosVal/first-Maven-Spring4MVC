@@ -5,7 +5,6 @@
  */
 package com.mycompany.amavenspringjpa.controllers;
 
-import com.mycompany.amavenspringjpa.dao.TrainerDao;
 import com.mycompany.amavenspringjpa.entities.Trainer;
 import com.mycompany.amavenspringjpa.services.TrainerService;
 import javax.validation.Valid;
@@ -25,23 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TrainersController {
     TrainerService tserv = new TrainerService();
     
-    /*
-    
-    3. ΓIA UPDATE trainer
-        - Το button θα οδηγεί στο /trainers/update/{id} σε μέθοδο GET
-          και εκεί θα μου εμφανίζει view με τα στοιχεία του trainer
-        - Στο submit της φόρμας θα πηγαίνει στο /trainers/update σε μέθοδο POST
-          και εκεί θα κάνω update του trainer (και του κωδικού του). Όταν τελείωσει θα πρέπει να
-          εμφανίζω μήνυμα επιτυχίας και να κάνω redirect στο /trainers
-    
-    4. ΓΙΑ DELETE trainer
-        - Το button θα οδηγεί στο /trainers/delete/{id} σε μέθοδο GET
-          και εκεί θα γίνεται το delete, και μετά redirect στο /trainers
-    
-    INSERT
-    SELECT
-        
-    */
     
     // READ
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -67,7 +49,7 @@ public class TrainersController {
         }
         tserv.addTrainer(trainer);
         model.addAttribute("success", "Trainer added successfully.");
-        model.addAttribute("path", "1; URL=../trainers");
+        model.addAttribute("path", "1; URL=http://localhost:8084/aMavenSpringJPA/trainers/");
         return "success";
     }
     
@@ -89,7 +71,7 @@ public class TrainersController {
         }
         tserv.updateTrainer(trainer);
         model.addAttribute("success", "Trainer updated successfully.");
-        model.addAttribute("path", "1; URL=../trainers");
+        model.addAttribute("path", "1; URL=http://localhost:8084/aMavenSpringJPA/trainers/");
         return "success";
     }
     
@@ -98,7 +80,7 @@ public class TrainersController {
     public String deleteTrainer(ModelMap model, @PathVariable String id) {
         tserv.deleteTrainer(Integer.parseInt(id));
         model.addAttribute("success", "Trainer deleted successfully.");
-        model.addAttribute("path", "1; URL=../");
+        model.addAttribute("path", "1; URL=http://localhost:8084/aMavenSpringJPA/trainers/");
         return "success";
     }
     
