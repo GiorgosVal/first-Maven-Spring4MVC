@@ -37,20 +37,8 @@ public class TrainersController {
     public String newTrainer(ModelMap model) {
         model.addAttribute("trainer", new Trainer());
         model.addAttribute("title", "Add a new Trainer");
-        model.addAttribute("action", "");
+        model.addAttribute("action", "save");
         return "trainerAdd";
-    }
-    
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveTrainer(@Valid Trainer trainer, BindingResult result, ModelMap model) {
-        
-        if(result.hasErrors()) {
-            return "trainerAdd";
-        }
-        tserv.addTrainer(trainer);
-        model.addAttribute("success", "Trainer added successfully.");
-        model.addAttribute("path", "1; URL=http://localhost:8084/aMavenSpringJPA/trainers/");
-        return "success";
     }
     
     // UPDATE
@@ -58,22 +46,31 @@ public class TrainersController {
     public String updateTrainer(ModelMap model, @PathVariable String id) {
         Trainer t = tserv.getTrainerById(Integer.parseInt(id));
         model.addAttribute("title", "Update Trainer");
-        model.addAttribute("action", "../update");
+        model.addAttribute("action", "../save");
         model.addAttribute("trainer", t);
         return "trainerAdd";
     }
     
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateTrainer(@Valid Trainer trainer, BindingResult result, ModelMap model) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveTrainer(@Valid Trainer trainer, BindingResult result, ModelMap model) {
         
         if(result.hasErrors()) {
             return "trainerAdd";
         }
-        tserv.updateTrainer(trainer);
-        model.addAttribute("success", "Trainer updated successfully.");
+        
+        if(trainer.getId() == null) {
+            tserv.addTrainer(trainer);
+            model.addAttribute("success", "Trainer added successfully.");
+        } else {
+            tserv.updateTrainer(trainer);
+            model.addAttribute("success", "Trainer updated successfully.");
+        }
+        
         model.addAttribute("path", "1; URL=http://localhost:8084/aMavenSpringJPA/trainers/");
         return "success";
     }
+    
+    
     
     // DELETE
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
