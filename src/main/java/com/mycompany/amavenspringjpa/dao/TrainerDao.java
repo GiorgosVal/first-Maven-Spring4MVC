@@ -54,12 +54,35 @@ public class TrainerDao {
         return t;
     }
     
+    
+     public Trainer getTrainerByUsername(String username) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_aMavenSpringJPA_war_1.0-SNAPSHOTPU");
+        EntityManager em = emf.createEntityManager();
+        Trainer t = null;
+        try {
+            t = (Trainer)em.createNamedQuery("Trainer.findByUsername")
+                .setParameter("username", username)
+                .getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        
+        return t;
+    }
+    
+    
+    
+    
     public boolean addTrainer(Trainer t) {
         boolean insertOK = false;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_aMavenSpringJPA_war_1.0-SNAPSHOTPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
+            
             em.persist(t);
             em.getTransaction().commit();
             insertOK = true;
@@ -86,6 +109,7 @@ public class TrainerDao {
             trainer.setTlname(t.getTlname());
             trainer.setTsubject(t.getTsubject());
             trainer.setTdob(t.getTdob());
+            trainer.setUsername(t.getUsername());
             em.getTransaction().commit();
             updateOK = true;
         } catch (Exception e) {

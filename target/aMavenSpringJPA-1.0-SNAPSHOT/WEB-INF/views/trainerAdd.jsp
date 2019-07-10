@@ -18,10 +18,10 @@
     <body>
         <h1>${title}</h1>
         <f:form method="POST" action="${action}" modelAttribute="trainer" class="form-horizontal">
-            
+
             <div class="row">
                 <div class="form-group col-md-12">
-                    <label class="col-md-3 control-lable" for="id">Id</label>
+
                     <div class="col-md-7">
                         <f:input type="hidden" path="id" id="id" class="form-control input-sm"  />
                         <div class="has-error">
@@ -78,11 +78,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+
+                    <div class="col-md-7">
+                        <f:input type="hidden" path="username" id="username" class="form-control input-sm"  />
+                        <div class="has-error">
+                            <f:errors path="username" class="help-inline"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="form-actions floatRight">
                     <input type="submit" value="Register" class="btn btn-primary btn-sm">
                 </div>
             </div>
+
+
         </f:form>
 
     </body>

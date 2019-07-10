@@ -20,7 +20,7 @@
     <body>
         
         <h1>Trainers List</h1>
-        <a href="http://localhost:8084/aMavenSpringJPA/trainers/add">Add a new Trainer</a>
+        <a href="/aMavenSpringJPA/trainers/add">Add a new Trainer</a>
         
         <table border="1" id="trainers">
             <thead>
@@ -30,6 +30,7 @@
                     <th>Last Name</th>
                     <th>Subject</th>
                     <th>Date of birth</th>
+                    <th>Username</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -42,8 +43,9 @@
                         <td>${t.tlname}</td>
                         <td>${t.tsubject}</td>
                         <td>${t.tdob}</td>
-                        <td><a href='http://localhost:8084/aMavenSpringJPA/trainers/update/${t.id}'>Update</a></td>
-                        <td><a href='http://localhost:8084/aMavenSpringJPA/trainers/delete/${t.id}'>Delete</a></td>
+                        <td>${t.username}</td>
+                        <td><a href='/aMavenSpringJPA/trainers/update/${t.id}'>Update</a></td>
+                        <td><a href='/aMavenSpringJPA/trainers/delete/${t.id}'>Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

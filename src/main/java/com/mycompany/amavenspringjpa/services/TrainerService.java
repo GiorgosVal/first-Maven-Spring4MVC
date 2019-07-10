@@ -14,25 +14,29 @@ import java.util.List;
  * @author giorgos
  */
 public class TrainerService {
-    
+
     TrainerDao tdao = new TrainerDao();
-    
-    public List<Trainer> getTrainers(){
+
+    public List<Trainer> getTrainers() {
         return tdao.getTrainers();
     }
-    
+
     public Trainer getTrainerById(Integer id) {
         return tdao.getTrainerById(id);
     }
-    
+
+    public Trainer getTrainerByUsername(String username) {
+        return tdao.getTrainerByUsername(username);
+    }
+
     public boolean addTrainer(Trainer t) {
         return tdao.addTrainer(t);
     }
-    
-    public boolean updateTrainer(Trainer t){
+
+    public boolean updateTrainer(Trainer t) {
         return tdao.updateTrainer(t);
     }
-    
+
     public boolean deleteTrainer(Integer id) {
         return tdao.deleteTrainer(id);
     }

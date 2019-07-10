@@ -30,7 +30,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "trainers", catalog = "assignment2", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"tfname", "tlname", "tdob"})})
+    @UniqueConstraint(columnNames = {"tfname", "tlname", "tdob", "username"})
+    , @UniqueConstraint(columnNames = {"username"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Trainer.findAll", query = "SELECT t FROM Trainer t")
@@ -38,7 +39,8 @@ import org.springframework.format.annotation.DateTimeFormat;
     , @NamedQuery(name = "Trainer.findByTfname", query = "SELECT t FROM Trainer t WHERE t.tfname = :tfname")
     , @NamedQuery(name = "Trainer.findByTlname", query = "SELECT t FROM Trainer t WHERE t.tlname = :tlname")
     , @NamedQuery(name = "Trainer.findByTsubject", query = "SELECT t FROM Trainer t WHERE t.tsubject = :tsubject")
-    , @NamedQuery(name = "Trainer.findByTdob", query = "SELECT t FROM Trainer t WHERE t.tdob = :tdob")})
+    , @NamedQuery(name = "Trainer.findByTdob", query = "SELECT t FROM Trainer t WHERE t.tdob = :tdob")
+    , @NamedQuery(name = "Trainer.findByUsername", query = "SELECT t FROM Trainer t WHERE t.username = :username")})
 public class Trainer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,6 +70,11 @@ public class Trainer implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tdob;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(nullable = false, length = 20)
+    private String username;
 
     public Trainer() {
     }
@@ -76,12 +83,13 @@ public class Trainer implements Serializable {
         this.id = id;
     }
 
-    public Trainer(Integer id, String tfname, String tlname, String tsubject, Date tdob) {
+    public Trainer(Integer id, String tfname, String tlname, String tsubject, Date tdob, String username) {
         this.id = id;
         this.tfname = tfname;
         this.tlname = tlname;
         this.tsubject = tsubject;
         this.tdob = tdob;
+        this.username = username;
     }
 
     public Integer getId() {
@@ -122,6 +130,14 @@ public class Trainer implements Serializable {
 
     public void setTdob(Date tdob) {
         this.tdob = tdob;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

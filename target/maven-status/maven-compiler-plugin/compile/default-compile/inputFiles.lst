@@ -2,6 +2,7 @@
 /home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/controllers/TrainersController.java
 /home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/configuration/aMavenSpringJPAInitializer.java
 /home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/entities/Trainer.java
-/home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/entities/User.java
 /home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/configuration/aMavenSpringJPAConfiguration.java
 /home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/services/TrainerService.java
+/home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/helpful/Username.java
+/home/giorgos/NetBeansProjects/aMavenSpringJPA/src/main/java/com/mycompany/amavenspringjpa/controllers/WelcomeController.java
